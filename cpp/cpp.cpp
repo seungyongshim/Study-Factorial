@@ -1,15 +1,19 @@
 #include <iostream>
 
+using namespace std;
 
 constexpr const uint64_t factorial(const uint64_t v)
 {
     return v == 0 ? 1 : factorial(v - 1) * v;
 }
 
-int main()
+constexpr const uint64_t factorial_tail(const uint64_t v, const uint64_t acc = 1)
 {
-    std::cout << factorial(15);
+    return v == 0 ? 1 : factorial_tail(v - 1, acc * v);
 }
 
-// complete compile-time 
-// 
+int main()
+{
+    cout << factorial(15) << endl;
+    cout << factorial_tail(15) << endl;
+}
